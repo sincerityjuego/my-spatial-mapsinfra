@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Philippine Disaster Management & Infrastructure System</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- AI Query Bar -->
+    <div class="query-bar">
+        <div class="query-container">
+            <input type="text" id="aiQuery" placeholder="Ask AI about any location, hazards, population, infrastructure, or solutions..." />
+            <button id="queryBtn" class="query-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Map Container -->
+        <div class="map-container">
+            <div id="map"></div>
+            
+            <!-- Map Controls -->
+            <div class="map-controls">
+                <button class="control-btn" id="toggle2D3D" title="Toggle 2D/3D View">
+                    <span>3D</span>
+                </button>
+                <button class="control-btn" id="toggleSatellite" title="Toggle Satellite View">
+                    <span>🛰️</span>
+                </button>
+                <button class="control-btn" id="toggleHazards" title="Toggle Hazard Layers">
+                    <span>⚠️</span>
+                </button>
+                <button class="control-btn" id="toggleWeather" title="Toggle Weather Data">
+                    <span>🌦️</span>
+                </button>
+            </div>
+
+            <!-- Legend -->
+            <div class="legend" id="legend">
+                <h3>Hazard Levels</h3>
+                <div class="legend-item">
+                    <span class="legend-color critical"></span>
+                    <span>Critical Risk</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color high"></span>
+                    <span>High Risk</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color medium"></span>
+                    <span>Medium Risk</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color low"></span>
+                    <span>Low Risk</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Side Panel -->
+        <div class="side-panel" id="sidePanel">
+            <div class="panel-header">
+                <h2 id="panelTitle">Location Information</h2>
+                <button class="close-btn" id="closePanel">&times;</button>
+            </div>
+            
+            <div class="panel-content" id="panelContent">
+                <p class="placeholder">Click on any location on the map to view detailed information</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Response Modal -->
+    <div class="modal" id="aiModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>AI Analysis</h2>
+                <button class="close-btn" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body" id="aiResponse">
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p>AI is analyzing your query...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Alert Notifications -->
+    <div class="alert-container" id="alertContainer"></div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
